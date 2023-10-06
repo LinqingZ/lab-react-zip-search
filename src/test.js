@@ -1,15 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
 
-function City(props) {
-  return <div>This is the City component</div>;
-}
-
-function ZipSearchField(props) {
-  return <div>This is the ZipSearchField component</div>;
-}
-
-function App() {
+function ZipCodeInfo() {
   const [zipCode, setZipCode] = useState(''); // Default zip code
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -30,7 +21,7 @@ function App() {
         setData(jsonData);
         setError(null);
       } catch (err) {
-        setError('No results found');
+        setError('Error fetching data');
         console.error(err);
       }
     };
@@ -40,11 +31,8 @@ function App() {
   }, [zipCode, apiUrl]);
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <h1>Zip Code Search</h1>
-      </div>
-      <div className="mx-auto" style={{ maxWidth: 400 }}>
+    <div>
+      <h2>Zip Code Information</h2>
       <input
         type="text"
         placeholder="Enter Zip Code"
@@ -56,25 +44,11 @@ function App() {
         {data.map((item) => (
           <li key={item.RecordNumber}>
             {item.City}, {item.State}
-            <br />
-            State: {item.State}
-            <br />
-            Location: ({item.Lat}, {item.Long})
-            <br />
-            Population (estimated): {item.EstimatedPopulation}
-            <br />
-            Total Wages: {item.TotalWages}
           </li>
         ))}
       </ul>
-        {/* <ZipSearchField /> */}
-        <div>
-          {/* <City />
-          <City /> */}
-        </div>
-      </div>
     </div>
   );
 }
 
-export default App;
+export default ZipCodeInfo;

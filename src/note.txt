@@ -1,0 +1,4 @@
+What I expecting to do
+use the ZipSearchField as searching, and call the data
+then return and call the city fuction to return city name and textbox
+[] remove the previouse city textbox when on change while there is no result on the extra number add
